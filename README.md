@@ -1,6 +1,6 @@
-# magicc.io
+# magicc.server
 
-Server app to control W2812B led strips using socket.io and - [flask](https://flask.palletsprojects.com/en/1.1.x/)
+Server app to control W2812B led strips using a Raspberry Pi 3, [flask](https://flask.palletsprojects.com/en/1.1.x/) and socket.io
 
 ## Running the server (development mode)
 
