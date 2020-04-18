@@ -24,5 +24,5 @@ Client/Server app to control W2812B led strips using a Raspberry Pi 3, [flask](h
     
     `python -m flask run`
 
-> - The `FLASK_ENV=development` enables hot reloading 
-> - Add parameter `--host=0.0.0.0` to `flask run` to publish server on any IP address
+> - `FLASK_ENV=development` enables hot reloading 
+> - Parameter `--host=0.0.0.0` makes flask publishing server on any IP address
