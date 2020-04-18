@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{{title}}</title>
+        {%- block styles %}
+            <link href="{{bootstrap_find_resource('css/bootstrap.css', cdn='bootstrap')}}" rel="stylesheet">
+            <link href="{{url_for('static', filename='css/main.css')}}" rel="stylesheet">
+        {%- endblock styles %}
+    </head>
+    <body>
+        <div class="container-fluid panel">
+            <div class="row">
+                <div class="col-sm-6 col-lg-1 col-lg-offset-5 col">
+                    <button type="button" class="btn btn-warning" style="background-color: #2aabd2"></button>
+                </div>
+                <div class="col-sm-6 col-lg-1 col">
+                    <button type="button" class="btn btn-warning" style="background-color: #843534"></button>
+                </div>
+            </div>
+        </div>
+        {% block body -%}
+            {% block navbar %}
+    {% endblock navbar %}
+        {% endblock body %}
+        {% block scripts %}
+            <script src="{{bootstrap_find_resource('jquery.js', cdn='jquery')}}"></script>
+            <script src="{{bootstrap_find_resource('js/bootstrap.js', cdn='bootstrap')}}"></script>
+            <script src="{{url_for('.static', filename='js/main.js')}}"></script>
+        {% endblock scripts %}
+    </body>
+</html>

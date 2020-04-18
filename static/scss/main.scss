@@ -1,0 +1,42 @@
+@import "variables";
+@import "placeholders";
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+.container-fluid {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.col {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.panel {
+  @extend %full-height;
+  .row {
+    $height: (100 - ($panel-row-margin-top * $number_of_rows)) / $number_of_rows;
+    min-height: $height;
+    height: $height;
+    .col {
+      @extend %full-height;
+      text-align: center;
+      background: #f8f8f8;
+      div {
+        height: 100%;
+      }
+      button, a {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}
