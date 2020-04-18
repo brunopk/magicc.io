@@ -2,6 +2,8 @@
 
 Client/Server app to control W2812B led strips using a Raspberry Pi 3, [flask](https://flask.palletsprojects.com/en/1.1.x/) and socket.io
 
+Tested with Python v3.6.4
+
 ## Running the server (debug mode)
 
 1. Create the Python environment:
