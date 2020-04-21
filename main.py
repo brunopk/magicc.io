@@ -26,7 +26,9 @@ def override_url_for():
 
 @app.route('/')
 def hello_world():
-    return render_template("index.html", title='Strip Controller')
+    colors = [(255, 0, 0), (0, 255, 0), (0, 0, 255), (255, 255, 0), (0, 255, 255), (255, 0, 255),
+              (0, 255, 100), (0, 100, 100)]
+    return render_template("index.html", title='Strip Controller', colors=colors)
 
 
 if __name__ == '__main__':

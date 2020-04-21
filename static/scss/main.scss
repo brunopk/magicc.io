@@ -13,6 +13,8 @@ body {
 .container-fluid {
   padding-left: 0;
   padding-right: 0;
+  margin-bottom: 0;
+  border: 0;
 }
 
 .col {
@@ -23,19 +25,23 @@ body {
 .panel {
   @extend %full-height;
   .row {
-    $height: (100 - ($panel-row-margin-top * $number_of_rows)) / $number_of_rows;
-    min-height: $height;
-    height: $height;
+    $height: 1 / $number_of_rows;
+    min-height: percentage($height);
+    height: percentage($height);
     .col {
       @extend %full-height;
+      $btn-default-border-width: 25px;
       text-align: center;
-      background: #f8f8f8;
-      div {
-        height: 100%;
-      }
-      button, a {
+      .btn-default {
         width: 100%;
         height: 100%;
+        cursor: pointer;
+      }
+      .btn-selected {
+        border: $btn-default-border-width/2 solid rgba(0, 0, 0, 0.1);
+        @media (max-device-width: $screen-sm){
+          border: $btn-default-border-width solid rgba(0, 0, 0, 0.1);
+        }
       }
     }
   }
