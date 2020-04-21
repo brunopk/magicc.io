@@ -2,6 +2,8 @@
 
 Client/Server app to control W2812B led strips using a Raspberry Pi 3, [flask](https://flask.palletsprojects.com/en/1.1.x/) and socket.io
 
+Tested with Python v3.6.4
+
 ## Running the server (debug mode)
 
 1. Create the Python environment:
@@ -24,5 +26,5 @@ Client/Server app to control W2812B led strips using a Raspberry Pi 3, [flask](h
     
     `python -m flask run`
 
-> - The `FLASK_ENV=development` enables hot reloading 
-> - Add parameter `--host=0.0.0.0` to `flask run` to publish server on any IP address
+> - `FLASK_ENV=development` enables hot reloading 
+> - Parameter `--host=0.0.0.0` tells flask to publish server on any IP address
