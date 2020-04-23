@@ -4,26 +4,49 @@
 // see https://www.bestcssbuttongenerator.com/#/1
 // see https://www.w3schools.com/colors/colors_picker.asp
 
-.btn-c {
+/*
+
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+}
+.myButton:hover {
+	background:linear-gradient(to bottom, #e9e9e9 5%, #f9f9f9 100%);
+	background-color:#e9e9e9;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}*/
+
+
+.btn-default {
   @extend %full-height;
   width: 100%;
   display:inline-block;
   border-radius: 40px;
   cursor:pointer;
-  color:#ffffff;
+  color:#000000;
   padding:12px 37px;
+  background: #f9f9f9 linear-gradient(to bottom, #f9f9f9 5%, #e9e9e9 100%)!important;// override bootstrap
+  border:20px solid #dcdcdc!important;
   @media (min-width: $screen-lg) {
     border-radius: 20px;
+    border:10px solid #dcdcdc!important;
   }
 }
 
-.btn-c:focus {
+.btn-default:focus {
   outline: none!important;
 }
 
-.btn-c:active{
+.btn-default:active{
   position:relative;
   top:1px;
+  background: #dcdcdc!important;
 }
 
 
@@ -34,13 +57,13 @@
   $mid-color:#7892c2;
   $shadow-color:#9fb4f2;
 
-  background: linear-gradient($main-color, $mid-color 10%, $main-color);
-  border:20px solid $border-color;
+  background: linear-gradient($main-color, $mid-color 10%, $main-color)!important;
+  border:20px solid $border-color!important;
   @media (min-width: $screen-lg) {
-    border:10px solid $border-color;
+    border:10px solid $border-color!important;
   }
   &:active {
-    background: $main-color;
+    background: $main-color!important;
   }
 }
 
@@ -51,13 +74,13 @@
   $mid-color: #ff6666;
   $shadow-color: #ffcccc;
 
-  background: linear-gradient($main-color, $mid-color 10%, $main-color);
-  border:20px solid $border-color;
+  background: linear-gradient($main-color, $mid-color 10%, $main-color)!important;
+  border:20px solid $border-color!important;
   @media (min-width: $screen-lg) {
-    border:10px solid $border-color;
+    border:10px solid $border-color!important;
   }
   &:active {
-    background: $border-color;
+    background: $border-color!important;
   }
 }
 
@@ -68,13 +91,13 @@
   $mid-color: #99e699;
   $shadow-color:#ebfaeb;
 
-  background: linear-gradient($main-color, $mid-color 10%, $main-color);
-  border:20px solid $border-color;
+  background: linear-gradient($main-color, $mid-color 10%, $main-color)!important;
+  border:20px solid $border-color!important;
   @media (min-width: $screen-lg) {
-    border:10px solid $border-color;
+    border:10px solid $border-color!important;
   }
   &:active {
-    background: $border-color;
+    background: $border-color!important;
   }
 }
 

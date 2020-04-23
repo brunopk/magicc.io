@@ -5,8 +5,8 @@
 $(document).ready(function () {
 
     $('.btn-default').click(function () {
-        $('button').removeClass('btn-selected');
-        $(this).addClass('btn-selected')
+        //$('button').removeClass('btn-selected');
+        //$(this).addClass('btn-selected')
     })
 
 })

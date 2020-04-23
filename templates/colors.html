@@ -1,37 +1,27 @@
 {% extends 'index.html' %}
-{% block body %}
-<div class="container-fluid panel">
-    <div class="row">
-        <div class="col-sm-6 col-lg-2 col-lg-offset-4 col">
-            <button class="btn-c btn-c-red"></button>
-        </div>
-        <div class="col-sm-6 col-lg-2 col">
-             <button class="btn-c btn-c-blue"></button>
-        </div>
+{% block buttons %}
+<div class="row">
+    <div class="col-sm-6 col-lg-2 col-lg-offset-4 col">
+        <button class="btn-default btn-c-red"></button>
     </div>
-    <div class="row">
-        <div class="col-sm-6 col-lg-2 col-lg-offset-4 col">
-            <button class="btn-c btn-c-green"></button>
-        </div>
-        <div class="col-sm-6 col-lg-2 col">
-             <button class="btn-c btn-c-blue"></button>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-6 col-lg-2 col-lg-offset-4 col">
-            <button class="btn-c btn-c-blue"></button>
-        </div>
-        <div class="col-sm-6 col-lg-2 col">
-             <button class="btn-c btn-c-blue"></button>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-6 col-lg-2 col-lg-offset-4 col">
-            <button class="btn-c btn-c-blue"></button>
-        </div>
-        <div class="col-sm-6 col-lg-2 col">
-             <button class="btn-c btn-c-blue"></button>
-        </div>
+    <div class="col-sm-6 col-lg-2 col">
+         <button class="btn-default btn-c-blue"></button>
     </div>
 </div>
-{% endblock body %}
+<div class="row">
+    <div class="col-sm-6 col-lg-2 col-lg-offset-4 col">
+        <button class="btn-default btn-c-green"></button>
+    </div>
+    <div class="col-sm-6 col-lg-2 col">
+         <button class="btn-default btn-c-blue"></button>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-6 col-lg-2 col-lg-offset-4 col">
+        <button class="btn-default btn-c-blue"></button>
+    </div>
+    <div class="col-sm-6 col-lg-2 col">
+         <button class="btn-default btn-c-blue"></button>
+    </div>
+</div>
+{% endblock buttons %}
