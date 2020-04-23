@@ -5,7 +5,7 @@
 $(document).ready(function () {
 
     $('.btn-default').click(function () {
-        $('div').removeClass('btn-selected');
+        $('button').removeClass('btn-selected');
         $(this).addClass('btn-selected')
     })
 

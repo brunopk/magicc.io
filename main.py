@@ -3,6 +3,7 @@ from flask_bootstrap import Bootstrap
 from flask_scss import Scss
 from os import path, stat
 
+title="Strip Controller"
 app = Flask(__name__)
 Bootstrap(app)
 Scss(app, static_dir='static', asset_dir='static')
@@ -28,7 +29,12 @@ def override_url_for():
 def hello_world():
     colors = [(255, 0, 0), (0, 255, 0), (0, 0, 255), (255, 255, 0), (0, 255, 255), (255, 0, 255),
               (0, 255, 100), (0, 100, 100)]
-    return render_template("index.html", title='Strip Controller', colors=colors)
+    return render_template("index.html", title=title, colors=colors)
+
+
+@app.route('/colors')
+def colors():
+    return render_template("colors.html", title=title)
 
 
 if __name__ == '__main__':

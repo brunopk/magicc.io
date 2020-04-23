@@ -1,0 +1,82 @@
+@import "placeholders";
+@import "variables";
+
+// see https://www.bestcssbuttongenerator.com/#/1
+// see https://www.w3schools.com/colors/colors_picker.asp
+
+.btn-c {
+  @extend %full-height;
+  width: 100%;
+  display:inline-block;
+  border-radius: 40px;
+  cursor:pointer;
+  color:#ffffff;
+  padding:12px 37px;
+  @media (min-width: $screen-lg) {
+    border-radius: 20px;
+  }
+}
+
+.btn-c:focus {
+  outline: none!important;
+}
+
+.btn-c:active{
+  position:relative;
+  top:1px;
+}
+
+
+.btn-c-blue {
+
+  $main-color:#476e9e;
+  $border-color:#4e6096;
+  $mid-color:#7892c2;
+  $shadow-color:#9fb4f2;
+
+  background: linear-gradient($main-color, $mid-color 10%, $main-color);
+  border:20px solid $border-color;
+  @media (min-width: $screen-lg) {
+    border:10px solid $border-color;
+  }
+  &:active {
+    background: $main-color;
+  }
+}
+
+.btn-c-red {
+
+  $border-color:#ff0000;
+  $main-color:#e60000;
+  $mid-color: #ff6666;
+  $shadow-color: #ffcccc;
+
+  background: linear-gradient($main-color, $mid-color 10%, $main-color);
+  border:20px solid $border-color;
+  @media (min-width: $screen-lg) {
+    border:10px solid $border-color;
+  }
+  &:active {
+    background: $border-color;
+  }
+}
+
+.btn-c-green {
+
+  $border-color:#2eb82e;
+  $main-color:#47d147;
+  $mid-color: #99e699;
+  $shadow-color:#ebfaeb;
+
+  background: linear-gradient($main-color, $mid-color 10%, $main-color);
+  border:20px solid $border-color;
+  @media (min-width: $screen-lg) {
+    border:10px solid $border-color;
+  }
+  &:active {
+    background: $border-color;
+  }
+}
+
+
+

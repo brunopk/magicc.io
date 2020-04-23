@@ -1,5 +1,6 @@
 @import "variables";
 @import "placeholders";
+@import "buttons";
 
 html {
   height: 100%;
@@ -17,32 +18,18 @@ body {
   border: 0;
 }
 
-.col {
-  padding-left: 0;
-  padding-right: 0;
-}
-
 .panel {
   @extend %full-height;
   .row {
     $height: 1 / $number_of_rows;
     min-height: percentage($height);
     height: percentage($height);
+    margin-bottom: 8px;
+    @media (min-width: $screen-lg) {
+      margin-bottom: 2px;
+    }
     .col {
       @extend %full-height;
-      $btn-default-border-width: 25px;
-      text-align: center;
-      .btn-default {
-        width: 100%;
-        height: 100%;
-        cursor: pointer;
-      }
-      .btn-selected {
-        border: $btn-default-border-width/2 solid rgba(0, 0, 0, 0.1);
-        @media (max-device-width: $screen-sm){
-          border: $btn-default-border-width solid rgba(0, 0, 0, 0.1);
-        }
-      }
     }
   }
 }
