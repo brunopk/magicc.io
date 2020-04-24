@@ -3,7 +3,8 @@ from flask_bootstrap import Bootstrap
 from flask_scss import Scss
 from os import path, stat
 
-title="Strip Controller"
+title = "Strip Controller"
+pages = ['/colors/1', '/effects/1']
 app = Flask(__name__)
 Bootstrap(app)
 Scss(app, static_dir='static', asset_dir='static')
@@ -19,6 +20,19 @@ def dated_url_for(endpoint, **values):
     return url_for(endpoint, **values)
 
 
+def previous_page(page):
+    return pages[pages.index(page) - 1]
+
+
+def next_page(page):
+    return pages[(pages.index(page) + 1) % pages.__len__()]
+
+
+def render_template_wrapper(actual_page, template, **kwargs):
+    return render_template(template, title=title, previous_page=previous_page(actual_page),
+                           next_page=next_page(actual_page), **kwargs)
+
+
 # Injects context variables before rendering
 @app.context_processor
 def override_url_for():
@@ -26,15 +40,20 @@ def override_url_for():
 
 
 @app.route('/')
-def hello_world():
-    colors = [(255, 0, 0), (0, 255, 0), (0, 0, 255), (255, 255, 0), (0, 255, 255), (255, 0, 255),
-              (0, 255, 100), (0, 100, 100)]
-    return render_template("index.html", title=title, colors=colors)
+def index():
+    return render_template_wrapper(pages[0], 'colors_1.html')
 
 
-@app.route('/colors')
-def colors():
-    return render_template("colors.html", title=title)
+@app.route('/colors/<int:n>')
+def colors(n):
+    actual_page = '/colors/{n}'.format(n=n)
+    return render_template_wrapper(actual_page, 'colors_{n}.html'.format(n=n))
+
+
+@app.route('/effects/<int:n>')
+def effects(n):
+    actual_page = '/effects/{n}'.format(n=n)
+    return render_template_wrapper(actual_page, 'effects_{n}.html'.format(n=n))
 
 
 if __name__ == '__main__':

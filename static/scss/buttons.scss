@@ -37,6 +37,16 @@
     border-radius: 20px;
     border:10px solid #dcdcdc!important;
   }
+  .glyphicon {
+    width: 100%;
+  }
+  .subtitle {
+    width: 100%;
+    font-size: $font-size/1.5;
+    @media (min-width: $screen-lg) {
+      font-size: $font-size-lg/2.5;
+    }
+  }
 }
 
 .btn-default:focus {

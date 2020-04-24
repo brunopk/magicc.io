@@ -17,10 +17,18 @@
             {% block buttons %}{% endblock buttons %}
              <div class="row">
                 <div class="col-sm-6 col-lg-2 col-lg-offset-4 col">
-                    <button class="btn-default"><span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span></button>
+                    <a href="{{ previous_page }}">
+                        <button class="btn-default">
+                            <span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span>
+                        </button>
+                    </a>
                 </div>
                 <div class="col-sm-6 col-lg-2 col">
-                     <button class="btn-default"><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></button>
+                    <a href="{{ next_page }}">
+                        <button class="btn-default" href="{{next_page}}">
+                            <span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span>
+                        </button>
+                    </a>
                 </div>
             </div>
         </div>

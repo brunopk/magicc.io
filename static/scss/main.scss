@@ -8,9 +8,9 @@ html {
 
 body {
   height: 100%;
-  font: 64px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: $font-size "Lucida Grande", Helvetica, Arial, sans-serif;
   @media (min-width: $screen-lg) {
-    font: 34px "Lucida Grande", Helvetica, Arial, sans-serif;
+    font: $font-size-lg "Lucida Grande", Helvetica, Arial, sans-serif;
   }
 }
 
