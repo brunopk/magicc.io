@@ -73,7 +73,7 @@
     border:10px solid $border-color!important;
   }
   &:active {
-    background: $main-color!important;
+    background: $border-color!important;
   }
 }
 
@@ -100,6 +100,57 @@
   $main-color:#47d147;
   $mid-color: #99e699;
   $shadow-color:#ebfaeb;
+
+  background: linear-gradient($main-color, $mid-color 10%, $main-color)!important;
+  border:20px solid $border-color!important;
+  @media (min-width: $screen-lg) {
+    border:10px solid $border-color!important;
+  }
+  &:active {
+    background: $border-color!important;
+  }
+}
+
+.btn-c-fuchsia {
+
+  $border-color:#b300b3;
+  $main-color:#ff00ff;
+  $mid-color: #ff80ff;
+  $shadow-color:#ffe6ff;
+
+  background: linear-gradient($main-color, $mid-color 10%, $main-color)!important;
+  border:20px solid $border-color!important;
+  @media (min-width: $screen-lg) {
+    border:10px solid $border-color!important;
+  }
+  &:active {
+    background: $border-color!important;
+  }
+}
+
+.btn-c-aqua {
+
+  $border-color:#00ffff;
+  $main-color:#00ffff;
+  $mid-color: #80ffff;
+  $shadow-color:#80ffff;
+
+  background: linear-gradient($main-color, $mid-color 10%, $main-color)!important;
+  border:20px solid $border-color!important;
+  @media (min-width: $screen-lg) {
+    border:10px solid $border-color!important;
+  }
+  &:active {
+    background: $border-color!important;
+  }
+}
+
+.btn-c-yellow {
+
+  $border-color:#cccc00;
+  $main-color:#ffff00;
+  $mid-color: #ffffcc;
+  $shadow-color:#ffffcc;
 
   background: linear-gradient($main-color, $mid-color 10%, $main-color)!important;
   border:20px solid $border-color!important;
