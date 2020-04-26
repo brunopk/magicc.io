@@ -11,7 +11,7 @@ Tested with :
 - 3.6.4
 - 3.7.3
 
-## Requirements
+## Software requirements
 
 - virtualenv
 
