@@ -47,6 +47,7 @@ Tested with :
 ![GitHub Logo](/doc/Raspberry-Pi-WS2812-Steckplatine-600x361.png)
 
 More information: https://tutorials-raspberrypi.com/connect-control-raspberry-pi-ws2812-rgb-led-strips/
+
 2. Without level shifter conversor:
 ![GitHub Logo](/doc/raspberry-pi-updated-schematic.png)
 
