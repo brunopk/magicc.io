@@ -23,6 +23,9 @@ Tested with :
 2. Activate the environment: 
 
     `source env/bin/activate`
+3. Install dependencies:
+
+    `pip install -r requirements.txt`
 3. Tell your terminal the application to work with by exporting the FLASK_APP environment variable: 
 
     `export FLASK_APP=main.py`
