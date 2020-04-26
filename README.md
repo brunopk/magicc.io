@@ -43,7 +43,8 @@ Tested with :
 
 ## Building the circuit
 
-1. With level shifter conversor: 
+1. With level shifter conversor:
+
 ![GitHub Logo](/doc/Raspberry-Pi-WS2812-Steckplatine-600x361.png)
 
 More information: https://tutorials-raspberrypi.com/connect-control-raspberry-pi-ws2812-rgb-led-strips/
