@@ -45,7 +45,9 @@ Tested with :
 
 1. With level shifter conversor:
 ![GitHub Logo](/doc/Raspberry-Pi-WS2812-Steckplatine-600x361.png)
+
 More information: https://tutorials-raspberrypi.com/connect-control-raspberry-pi-ws2812-rgb-led-strips/
 2. Without level shifter conversor:
 ![GitHub Logo](/doc/raspberry-pi-updated-schematic.png)
+
 More information: https://core-electronics.com.au/tutorials/ws2812-addressable-leds-raspberry-pi-quickstart-guide.html
