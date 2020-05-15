@@ -1,0 +1,22 @@
+{% extends 'index.html' %}
+{% block body %}
+<div class="container-fluid panel">
+    {% block buttons %}{% endblock buttons %}
+     <div class="row">
+        <div class="col-sm-6 col-lg-2 col-lg-offset-4 col">
+            <a href="{{ previous_page }}">
+                <button class="btn-default">
+                    <span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span>
+                </button>
+            </a>
+        </div>
+        <div class="col-sm-6 col-lg-2 col">
+            <a href="{{ next_page }}">
+                <button class="btn-default" href="{{next_page}}">
+                    <span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span>
+                </button>
+            </a>
+        </div>
+     </div>
+</div>
+{% endblock body %}

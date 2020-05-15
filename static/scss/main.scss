@@ -36,3 +36,46 @@ body {
     }
   }
 }
+
+#form-login {
+
+  $border-color:#2eb82e;
+  $main-color:#47d147;
+  $mid-color: #99e699;
+  $shadow-color:#ebfaeb;
+
+  .row {
+    margin-top: 8px!important;
+    button, input {
+      font: $font-size "Lucida Grande", Helvetica, Arial, sans-serif;
+      height: 100%;
+      @media (min-width: $screen-lg) {
+        font: $font-size-lg "Lucida Grande", Helvetica, Arial, sans-serif;
+      }
+    }
+  }
+
+  .btn {
+    @extend %full-height;
+    width: 100%;
+    display:inline-block;
+    border-radius: 40px;
+    cursor:pointer;
+    color:white;
+    background: linear-gradient($main-color, $mid-color 10%, $main-color)!important;
+    border:20px solid $border-color!important;
+    @media (min-width: $screen-lg) {
+      border-radius: 20px;
+      border:10px solid $border-color!important;
+    }
+  }
+  .btn:focus {
+    outline: none!important;
+  }
+  .btn:active{
+    position:relative;
+    top:1px;
+    background: $border-color!important;
+  }
+}
+

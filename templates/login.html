@@ -1,0 +1,20 @@
+{% extends 'index.html' %}
+{% block body %}
+<form id="form-login" href="/login" method="post">
+    <div class="row">
+        <div class="col-sm-12 col-lg-4 col-lg-offset-4 col">
+            <p class="bg-danger">...</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-lg-4 col-lg-offset-4 col">
+            <input type="text" class="form-control" name="name" placeholder="Name">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-lg-4 col-lg-offset-4 col">
+            <button type="submit" class="btn">LOGIN</button>
+        </div>
+    </div>
+</form>
+{% endblock body %}
