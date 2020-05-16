@@ -37,6 +37,30 @@ body {
   }
 }
 
+.subpanel {
+
+  $border-color:#ff0000;
+  $main-color:#e60000;
+  $mid-color: #ff6666;
+  $shadow-color: #ffcccc;
+
+  @extend %full-height-full-width;
+  .row {
+    width: 100%;
+    $height: 1 / $number_of_rows_subpanel;
+    min-height: percentage($height);
+    height: percentage($height);
+    margin: 0;
+    .col {
+      padding: 0;
+    }
+  }
+
+  #btn-off {
+    color: white;
+  }
+}
+
 #form-login {
 
   $border-color:#2eb82e;

@@ -3,20 +3,39 @@
 <div class="container-fluid panel">
     {% block buttons %}{% endblock buttons %}
      <div class="row">
-        <div class="col-sm-6 col-lg-2 col-lg-offset-4 col">
-            <a href="{{ previous_page }}">
-                <button class="btn-default">
-                    <span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span>
-                </button>
-            </a>
-        </div>
-        <div class="col-sm-6 col-lg-2 col">
-            <a href="{{ next_page }}">
-                <button class="btn-default" href="{{next_page}}">
-                    <span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span>
-                </button>
-            </a>
-        </div>
+         <div class="col-sm-12 col-lg-4 col-lg-offset-4 col">
+
+         <div class="container container-fluid subpanel">
+             <div class="row">
+                 <div class="col-sm-6 col-lg-6 col">
+                     <a href="{{ previous_page }}">
+                         <button class="btn-default">
+                             <span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span>
+                         </button>
+                     </a>
+                 </div>
+
+                 <div class="col-sm-6 col-lg-6 col">
+                     <a href="{{ next_page }}">
+                         <button class="btn-default" href="{{next_page}}">
+                             <span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span>
+                         </button>
+                     </a>
+                 </div>
+             </div>
+
+             <div class="row">
+                 <div class="col">
+                     <a href="{{ previous_page }}">
+                         <button id="btn-off" class="btn-default btn-c-red">
+                             <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+                         </button>
+                     </a>
+                 </div>
+             </div>
+         </div>
+
+         </div>
      </div>
 </div>
 {% endblock body %}
