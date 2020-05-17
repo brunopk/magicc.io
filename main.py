@@ -46,6 +46,13 @@ def try_save_user_to_db(name):
     conn.close()
     return res
 
+def remove_user_from_db(name):
+    conn = sqlite3.connect(db_name)
+    c = conn.cursor()
+    c.execute('DELETE FROM user WHERE name = "{name}"'.format(name=name))
+    conn.commit()
+    conn.close()
+
 
 # Avoid browser file caching, extracted from https://stackoverflow.com/questions/21714653/flask-css-not-updating
 def dated_url_for(endpoint, **values):
@@ -119,6 +126,7 @@ def login():
             current_user = try_save_user_to_db(new_user)
             if current_user.__eq__(new_user):
                 session['key'] = app_key.bytes
+                session['username'] = current_user
                 return redirect(url_for('colors', n=1))
             else:
                 error = '{s} is controlling the strip now. Try again later ;)'.format(s=current_user)
@@ -127,6 +135,22 @@ def login():
         return render_template_wrapper('login.html')
     else:
         abort(404)
+
+
+@app.route('/logout', methods=['POST'])
+def logout():
+    if session.keys().__contains__('key'):
+        user_key = session.get('key')
+        if not type(app_key.bytes).__name__.__eq__(type(user_key).__name__) or not user_key.__eq__(app_key.bytes):
+            abort(400)
+        else:
+            current_user = session['username']
+            session.pop('key')
+            session.pop('username')
+            remove_user_from_db(current_user)
+            return redirect(url_for('login'))
+    else:
+        abort(400)
 
 
 @app.route('/colors/<int:n>')
