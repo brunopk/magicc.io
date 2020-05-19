@@ -1,12 +1,14 @@
 import sqlite3
 import uuid
+import json
 
 from flask import Flask, render_template, url_for, redirect, request, session, abort
 from flask_bootstrap import Bootstrap
 from flask_scss import Scss
 from functools import wraps
 from os import path, stat
-from rpi_ws281x import PixelStrip, Color
+from module_h.client import Client
+from config import RPI_WS281x_HOST, RPI_WS281x_PORT
 
 title = "Strip Controller"
 db_name = 'sqlite3.db'
@@ -45,6 +47,7 @@ def try_save_user_to_db(name):
         conn.commit()
     conn.close()
     return res
+
 
 def remove_user_from_db(name):
     conn = sqlite3.connect(db_name)
@@ -86,11 +89,32 @@ def login_required(f):
         if session.keys().__contains__('key'):
             user_key = session.get('key')
             if not type(app_key.bytes).__name__.__eq__(type(user_key).__name__) or not user_key.__eq__(app_key.bytes):
-                return redirect(url_for('login'))
+                if request.content_type is not None and request.content_type.__eq__('application/json'):
+                    abort(403)
+                else:
+                    return redirect(url_for('login'))
         else:
             return redirect(url_for('login'))
         return f(*args, **kwargs)
     return decorated_function
+
+
+def turn_off_strip():
+    cmd = {
+        'action': 'turn_off'
+    }
+    Client(RPI_WS281x_HOST, RPI_WS281x_PORT).send_command(json.dumps(cmd))
+
+
+def blink_color(red, green, blue):
+    cmd = {
+        'action': 'effect',
+        'name': 'blink_color',
+        'red': red,
+        'green': green,
+        'blue': blue
+    }
+    Client(RPI_WS281x_HOST, RPI_WS281x_PORT).send_command(json.dumps(cmd))
 
 
 # Injects context variables before rendering
@@ -127,6 +151,7 @@ def login():
             if current_user.__eq__(new_user):
                 session['key'] = app_key.bytes
                 session['username'] = current_user
+                blink_color(0, 255, 0)
                 return redirect(url_for('colors', n=1))
             else:
                 error = '{s} is controlling the strip now. Try again later ;)'.format(s=current_user)
@@ -148,6 +173,7 @@ def logout():
             session.pop('key')
             session.pop('username')
             remove_user_from_db(current_user)
+            turn_off_strip()
             return redirect(url_for('login'))
     else:
         abort(400)
@@ -164,6 +190,14 @@ def colors(n):
 def effects(n):
     return render_template_wrapper('effects_{n}.html'.format(n=n), '/effects/{n}'.format(n=n))
 
+
+@app.route('/command', methods=['POST'])
+@login_required
+def command():
+    # TODO Improve error management
+    print(request.get_data())
+    Client(RPI_WS281x_HOST, RPI_WS281x_PORT).send_command(request.get_data())
+    return "", 200
 
 if __name__ == '__main__':
     app.run()
