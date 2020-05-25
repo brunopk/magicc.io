@@ -1,8 +1,11 @@
 # strip.controller
 
-Client/Server app to control W2812B led strips using a Raspberry Pi 3, [flask](https://flask.palletsprojects.com/en/1.1.x/) and socket.io. 
-Signals for the leds are generated with the [rpi-ws281x](https://github.com/rpi-ws281x/rpi-ws281x-python) module which is 
-the official Python distribution of the [ws281x library](http://github.com/richardghirst/rpi_ws281x).
+strip.controller makes possible to control W2812B led strips using a Raspberry Pi 3. It's conformed by two modules (programs): 
+**m1** and **m2**.  m1 provides an interface to send specific PWM (pulse-width modulation) signals to the strip. m2 provides a 
+GUI created with [flask](https://flask.palletsprojects.com/en/1.1.x/ (client/server application) which receive orders from the user 
+(e.g. turning the strip on blue color) and sends them to m1. m1 and m2 interacts with commands represented as JSON objects 
+sent by TCP.
+
 
 ## Python versions
 
@@ -15,34 +18,26 @@ Tested with :
 
 - virtualenv
 
-## Running the server (debug mode)
+## Running strip.controller
 
-1. Create the Python environment:
- 
-    `virtualenv -p path/to/python/interpreter env`
-2. Activate the environment: 
+First, m1 must be run:
 
-    `source env/bin/activate`
-3. Install dependencies:
+1. `cd m1/`
+2. `chmod +x server.py`
+3. `sudo ./server.py`
 
-    `pip install -r requirements.txt`
-3. Tell your terminal the application to work with by exporting the FLASK_APP environment variable: 
+> Root privileges are needed in order to gain access to the GPIO and other hardware components.
 
-    `export FLASK_APP=main.py`
-4. Set the environment variable to run flask on debug mode:
+Then m2 :
 
-   `export FLASK_ENV=development`
-5. Run the server : 
-    
-    `flask run`
-    
-    or 
-    
-    `python -m flask run`
+1. `cd m2/`
+2. `export FLASK_APP=main.py`
+3. `export FLASK_ENV=development`
+4. `export PYTHONPATH=../`
+5. `flask run --host=0.0.0.0`
 
-> - `FLASK_ENV=development` enables hot reloading 
-> - Parameter `--host=0.0.0.0` tells flask to publish server on any IP address
-> - Root privileges are needed to use GPIO ports so flask must be run with `sudo` : `sudo env/bin/python flask run`
+> The FLASK_ENV environment variable allows flask to run on development mode and compile SCSS files automatically (hot reloading)
+> generating CSS files on `m2/static/css` directory.
 
 ## Building the circuit
 
@@ -55,3 +50,9 @@ More information: https://tutorials-raspberrypi.com/connect-control-raspberry-pi
 2. Without level shifter conversor: 
 ![GitHub Logo](/doc/raspberry-pi-updated-schematic.png)
 More information: https://core-electronics.com.au/tutorials/ws2812-addressable-leds-raspberry-pi-quickstart-guide.html
+
+
+## Links
+
+- https://github.com/rpi-ws281x/rpi-ws281x-python 
+- http://github.com/richardghirst/rpi_ws281x
