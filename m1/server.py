@@ -8,9 +8,7 @@ import json
 
 from os.path import dirname,abspath
 from rpi_ws281x import Color, PixelStrip
-
 sys.path.append(dirname(dirname(abspath(__file__))))
-
 from config import *
 
 

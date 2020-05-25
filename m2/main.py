@@ -7,11 +7,13 @@ from flask_bootstrap import Bootstrap
 from flask_scss import Scss
 from functools import wraps
 from os import path, stat
-from module_h.client import Client
-from config import RPI_WS281x_HOST, RPI_WS281x_PORT
+from m1.client import Client
+from m1.config import RPI_WS281x_HOST, RPI_WS281x_PORT
 
 title = "Strip Controller"
 db_name = 'sqlite3.db'
+static_dir = path.join(path.dirname(__file__), 'static')
+asset_dir = static_dir
 app_key = uuid.uuid1()
 pages = ['/colors/1', '/effects/1']
 app = Flask(__name__)
@@ -124,7 +126,7 @@ def override_url_for():
 
 
 Bootstrap(app)
-Scss(app, static_dir='static', asset_dir='static')
+Scss(app, static_dir=static_dir, asset_dir=asset_dir)
 init_db()
 
 
