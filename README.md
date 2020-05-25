@@ -2,7 +2,7 @@
 
 strip.controller makes possible to control W2812B led strips using a Raspberry Pi 3. It's conformed by two modules (programs): 
 **m1** and **m2**.  m1 provides an interface to send specific PWM (pulse-width modulation) signals to the strip. m2 provides a 
-GUI created with [flask](https://flask.palletsprojects.com/en/1.1.x/ (client/server application) which receive orders from the user 
+GUI created with [flask](https://flask.palletsprojects.com/en/1.1.x/) (client/server application) which receive orders from the user 
 (e.g. turning the strip on blue color) and sends them to m1. m1 and m2 interacts with commands represented as JSON objects 
 sent by TCP.
 
