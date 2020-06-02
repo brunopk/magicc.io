@@ -7,8 +7,8 @@ from flask_bootstrap import Bootstrap
 from flask_scss import Scss
 from functools import wraps
 from os import path, stat
+from config import RPI_WS281x_HOST, RPI_WS281x_PORT
 from m1.client import Client
-from m1.config import RPI_WS281x_HOST, RPI_WS281x_PORT
 
 title = "Strip Controller"
 db_name = 'sqlite3.db'
