@@ -8,9 +8,11 @@ import json
 
 from os.path import dirname,abspath
 from rpi_ws281x import Color, PixelStrip
-sys.path.append(dirname(dirname(abspath(__file__))))
-from config import *
 
+sys.path.append(dirname(dirname(abspath(__file__))))
+
+from config import *
+from m1.controller import Controller
 
 if __name__ == '__main__':
 
@@ -29,15 +31,18 @@ if __name__ == '__main__':
         parser.print_help()
         exit(1)
 
-    effects = __import__('effects')
     # Create NeoPixel object with appropriate configuration.
     strip = PixelStrip(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL)
     # Intialize the library (must be called once before other functions).
     strip.begin()
+    controller = Controller(strip)
+
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     server_socket.bind((RPI_WS281x_HOST, RPI_WS281x_PORT))
     server_socket.listen(TCP_MAX_QUEUE)
+
     logging.basicConfig(level=log_level)
+
     print('Listening on IP address {ip} and port {port}.'.format(ip=RPI_WS281x_HOST, port=RPI_WS281x_PORT))
     print('Press Ctrl-C to quit.')
 
@@ -62,26 +67,24 @@ if __name__ == '__main__':
                 if 'action' in json_cmd:
                     action = json_cmd['action']
                     if action.__eq__('color'):
-                        effect_function = getattr(effects, 'static_color')
                         color = Color(json_cmd['red'], json_cmd['green'], json_cmd['blue'])
-                        effect_function(strip, color)
+                        controller.play_effect('static_color', color)
                     elif action.__eq__('effect'):
                         if 'name' in json_cmd:
                             effect_name = json_cmd['name']
                             try:
-                                effect_function = getattr(effects, effect_name)
                                 if effect_name.__eq__('blink_color'):
                                     color = Color(json_cmd['red'], json_cmd['green'], json_cmd['blue'])
-                                    effect_function(strip, color)
+                                    controller.play_effect('blink_color', color)
                                 else:
-                                    effect_function(strip)
-                            except AttributeError:
+                                   controller.play_effect(effect_name)
+                            except ModuleNotFoundError:
                                 logging.warning('Wrong effect name: {effect_name}'.format(effect_name=effect_name))
                         else:
                             logging.warning('Effect name undefined')
 
                     elif action.__eq__('turn_off'):
-                        getattr(effects, 'turn_off')(strip)
+                        controller.turn_off_strip()
                     else:
                         logging.warning('Unrecognized action {action}'.format(action=action))
                 else:
@@ -97,4 +100,4 @@ if __name__ == '__main__':
         print('Closing socket...')
         server_socket.close()
         print('Turning strip off...')
-        getattr(effects, 'turn_off')(strip)
+        controller.turn_off_strip()
