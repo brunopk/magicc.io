@@ -197,7 +197,6 @@ def effects(n):
 @login_required
 def command():
     # TODO Improve error management
-    print(request.get_data())
     Client(RPI_WS281x_HOST, RPI_WS281x_PORT).send_command(request.get_data())
     return "", 200
 
