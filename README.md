@@ -31,10 +31,11 @@ First, m1 must be run:
 Then m2 :
 
 1. `cd m2/`
-2. `export FLASK_APP=main.py`
-3. `export FLASK_ENV=development`
-4. `export PYTHONPATH=../`
-5. `flask run --host=0.0.0.0`
+2. `mkdir m2/static/css`
+3. `export FLASK_APP=main.py`
+4. `export FLASK_ENV=development`
+5. `export PYTHONPATH=../`
+6. `flask run --host=0.0.0.0`
 
 > The FLASK_ENV environment variable allows flask to run on development mode and compile SCSS files automatically (hot reloading)
 > generating CSS files on `m2/static/css` directory.
